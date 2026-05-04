@@ -4,11 +4,14 @@ This directory contains a collection of self-contained capability packages (Skil
 
 ## 🛠 Available Skills
 
-| Skill Name | Description |
-| :--- | :--- |
-| `create-prd` | Generates detailed Product Requirements Documents (PRD) in Markdown, including a structured process for clarifying requirements. |
-| `generate-tasks` | Converts requirements into actionable, step-by-step Markdown task lists with parent/sub-tasks and relevant file tracking. |
-| `open-pr` | Automates the creation of draft Pull Requests on GitHub with professional and contextual descriptions. |
+| Skill Name       | Description                                                                                                                      |
+| :--------------- | :------------------------------------------------------------------------------------------------------------------------------- |
+| `create-prd`     | Generates detailed Product Requirements Documents (PRD) in Markdown, including a structured process for clarifying requirements. |
+| `generate-tasks` | Converts requirements into actionable, step-by-step Markdown task lists with parent/sub-tasks and relevant file tracking.        |
+| `open-pr`        | Automates the creation of draft Pull Requests on GitHub with professional and contextual descriptions.                           |
+| `obsidian-vault` | Interacts with Obsidian vault using the Obsidian CLI — read, write, search, and manage notes in your vault.                 |
+| `skill-creator`  | Collaboratively creates new pi agent skills — walks through requirements, validates against the spec, and generates the structure. |
+| `take-notes`     | Creates, reads, and updates project notes in an Obsidian vault under Pi Notes.                                                |
 
 ---
 
@@ -17,6 +20,7 @@ This directory contains a collection of self-contained capability packages (Skil
 When adding a new skill to this repository, follow the [Agent Skills Specification](https://agentskills.io/specification).
 
 ### 1. Directory Structure
+
 Each skill must reside in its own directory named after the skill itself.
 
 ```text
@@ -28,17 +32,21 @@ skill-name/
 ```
 
 ### 2. `SKILL.md` Format
+
 The `SKILL.md` file is the entry point. It must contain valid YAML frontmatter and clear instructions.
 
 #### Frontmatter Requirements
-| Field | Required | Constraint | Description |
-| :--- | :--- | :--- | :--- |
-| `name` | **Yes** | 1-64 chars, lowercase, hyphens only | **Must match parent directory name.** |
-| `description`| **Yes** | Max 1024 chars | A specific description of what the skill does to help the agent discover it. |
-| `license` | No | String | The license for the skill. |
+
+| Field         | Required | Constraint                          | Description                                                                  |
+| :------------ | :------- | :---------------------------------- | :--------------------------------------------------------------------------- |
+| `name`        | **Yes**  | 1-64 chars, lowercase, hyphens only | **Must match parent directory name.**                                        |
+| `description` | **Yes**  | Max 1024 chars                      | A specific description of what the skill does to help the agent discover it. |
+| `license`     | No       | String                              | The license for the skill.                                                   |
 
 #### Content Structure
+
 Use Markdown headers to organize the skill's logic:
+
 - `# Skill Name`: A clear title.
 - `## Setup`: Instructions for any one-time configuration (e.g., `npm install`).
 - `## Process` or `## Usage`: Step-by-step instructions for the agent to follow.
@@ -52,8 +60,9 @@ Use Markdown headers to organize the skill's logic:
 - **Validate Naming**: Ensure `name` in frontmatter does not have leading/trailing hyphens or consecutive hyphens (e.g., `my-skill`, not `-my--skill`).
 
 ## 📋 Checklist for New Skills
+
 - [ ] Directory name is lowercase, hyphenated, and matches the `name` in `SKILL.md`.
 - [ ] `SKILL.md` has a `name` and `description` in the frontmatter.
-- [ ] The `description` is descriptive enough for the agent to know *when* to use it.
+- [ ] The `description` is descriptive enough for the agent to know _when_ to use it.
 - [ ] The `Process` section provides clear, actionable steps.
 - [ ] All paths within the skill are relative to the skill directory.
